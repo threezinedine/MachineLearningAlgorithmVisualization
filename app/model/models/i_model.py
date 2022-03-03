@@ -7,5 +7,6 @@ class IModel(ABC):
         pass
 
     @abstractmethod
-    def predict(self, point):
+    def predict(self, data):
         pass
+

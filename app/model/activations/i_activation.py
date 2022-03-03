@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-    def __init__(self):{
 
 
 class IActivation(ABC):
