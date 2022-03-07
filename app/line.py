@@ -33,5 +33,5 @@ class Line(IDrawable):
 
             graph.axes.plot(x_range, y_range)
             graph.draw()
-        except Exception error:
+        except Exception as error:
             print(error)

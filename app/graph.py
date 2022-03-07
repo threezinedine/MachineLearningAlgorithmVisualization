@@ -18,6 +18,8 @@ class Graph(FigureCanvas):
         self.axes.set_xlim(self.x_scale)
         self.axes.set_ylim(self.y_scale)
 
+        self.label = None
+
     def update_scale(self, x_scale, y_scale):
         self.x_scale = x_scale
         self.y_scale = y_scale
@@ -29,8 +31,6 @@ class Graph(FigureCanvas):
         self.draw()
 
     def click(self, event):
-#        label = Label(0, Color.RED)
-#        point = Point((event.xdata, event.ydata), label)
-#        point.draw(self)
-        line = Line(lambda x: x-1)
-        line.draw(self)
+        if self.label is not None:
+            point = Point((event.xdata, event.ydata), self.label)
+            point.draw(self)

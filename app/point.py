@@ -49,5 +49,5 @@ class Point(IDrawable):
         try:
             graph.axes.scatter(self.coor[0], self.coor[1], c=self.label.color)
             graph.draw()
-        except Exception error:
-            print(error)
+        except Exception as e:
+            print(e)
