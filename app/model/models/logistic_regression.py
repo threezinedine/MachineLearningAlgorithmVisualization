@@ -8,6 +8,9 @@ class LogisticRegression(IModel):
 
         Parameters
         ----------
+            learning_rate: float 
+                The learning rate that represent how fast the gradient updating.
+
             weights: np.ndarray
                 The weights parameters of the model.
     """
@@ -16,6 +19,14 @@ class LogisticRegression(IModel):
         self.__learning_rate = learning_rate 
         self.__activation_func = activation_func
         self.__loss_func = loss_func
+
+    @property
+    def learning_rate(self):
+        return self.__learning_rate
+
+    @learning_rate.setter
+    def learning_rate(self, new_learning_rate):
+        self.__learning_rate = new_learning_rate
 
     @property
     def weights(self):
@@ -64,5 +75,4 @@ class LogisticRegression(IModel):
             return self.__activation_func.call(np.dot(dummy_X, self.__weights))
         except:
             self.__random_weights(dummy_X.shape[1])
-            print(self.weights)
             return self.__activation_func.call(np.dot(dummy_X, self.__weights))

@@ -19,6 +19,7 @@ class Graph(FigureCanvas):
         self.axes.set_ylim(self.y_scale)
 
         self.label = None
+        self.__stack_points = []
 
     def update_scale(self, x_scale, y_scale):
         self.x_scale = x_scale
@@ -30,7 +31,14 @@ class Graph(FigureCanvas):
         self.axes.plot([0, 0.5], [0.5, 1])
         self.draw()
 
+    @property
+    def stack_points(self):
+        points = self.__stack_points.copy()
+        self.__stack_points = []
+        return points
+
     def click(self, event):
         if self.label is not None:
             point = Point((event.xdata, event.ydata), self.label)
             point.draw(self)
+            self.__stack_points.append(point)
