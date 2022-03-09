@@ -37,3 +37,6 @@ class Data:
             self.__points.append(new_point)
         else:
             raise TypeError("add_point must receive Point object.")
+
+    def reset(self):
+        self.__points = []

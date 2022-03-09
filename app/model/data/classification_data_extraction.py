@@ -7,7 +7,8 @@ class ClassificationDataExtraction(IDataExtraction):
         X = []
         y = []
         for point in data.points:
-            X.append(point.coor)
-            y.append([point.label.label])
+            if point.coor != (None, None): 
+                X.append(point.coor)
+                y.append([point.label.label])
 
         return np.concatenate([np.array(X), np.array(y)], axis=1)

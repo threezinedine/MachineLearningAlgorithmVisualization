@@ -31,7 +31,13 @@ class Line(IDrawable):
             x_range = np.linspace(*graph.x_scale, NUM_POINTS)
             y_range = self.__func(x_range)  
 
-            graph.axes.plot(x_range, y_range)
+            indexes = []
+            y_min, y_max = graph.y_scale
+            for index, y in enumerate(y_range):
+                if not y_min <= y <= y_max:
+                    continue
+                indexes.append(index)
+            graph.axes.plot(x_range[indexes], y_range[indexes])
             graph.draw()
         except Exception as error:
             print(error)

@@ -10,3 +10,6 @@ class IModel(ABC):
     def predict(self, data):
         pass
 
+    @abstractmethod
+    def get_lines(self):
+        pass

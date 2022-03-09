@@ -1,4 +1,5 @@
 from .i_model import IModel
+from ...line import Line
 import numpy as np
 
 
@@ -75,4 +76,11 @@ class LogisticRegression(IModel):
             return self.__activation_func.call(np.dot(dummy_X, self.__weights))
         except:
             self.__random_weights(dummy_X.shape[1])
+            print(np.dot(dummy_X, self.__weights))
             return self.__activation_func.call(np.dot(dummy_X, self.__weights))
+
+    def get_lines(self):
+        a, b, c = self.weights
+        def func(x):
+            return - a[0]/c[0] - b[0]/c[0] * x
+        return [Line(func)]

@@ -69,5 +69,9 @@ class BinaryCrossentropy(ILoss):
         # handle y_pred
         y_pred = self.__check("y_pred", y_pred)
 
+        for index in range(y_pred.shape[0]):
+            if y_pred[index, 0] == 0 or y_pred[index, 0] == 1:
+                y_pred[index, 0] == 0.5
+
         result = (y_pred - y_true)/(y_pred * (1 - y_pred))
         return result
